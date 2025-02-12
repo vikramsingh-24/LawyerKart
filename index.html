@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>LegalKart</title>
+    <style>
+        body {
+            margin:0;
+            font-family: arial,sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 15px 50px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #7c1d1d;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            font-weight: bold;
+        }
+        .nav-links a{
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+        .get-started {
+            background-color: #7c1d1d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero {
+            padding: 100px 20px;
+            background-color: #f5f5f5;
+        }
+        .hero h1{
+            font-size: 48px;
+            font-weight: bold;
+            color: #222;
+        }
+        .hero p{
+            font-size: 18px;
+            color: #555;
+            margin: 20px 0;
+        }
+        .buttons a{
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            display: inline-block;
+            margin: 5px;
+        }
+        .btn-primary{
+            background-color: #7c1d1d;
+            color: white;
+        }
+        .btn-secondary{
+            background-color: white;
+            color: black;
+            border: 1px solid #ccc;
+        }
+        .lawyer-section{
+            padding: 50px 20px;
+            background-color: white;
+        }
+        .lawyer-section h2{
+            font-size: 32px;
+            color: #222;
+        }
+        .lawyer-section p{
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .card-container {
+            display: flex;
+            justify-content:center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: left;
+            gap: 1000px;
+        }
+        .card h3{
+            color: black;
+        }
+        .card p{
+            color: #555;
+        }
+        .card button {
+            background-color: #7c1d1d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition:background-color 0.3s ease ;
+        }
+        .card button:hover {
+            background-color: #5a1414;
+        }
+        .container {
+            padding: 50px 20px;
+        }
+        h1 {
+            font-size: 36px;
+            color: #222;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 50px;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto; 
+        }
+        .newcard {
+            background-color: white;
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .newcard h3 {
+            color: black;
+            font-size: 20px;
+        }
+        .newcard p {
+            color: #555;
+            font-size: 16px;
+        }
+        .newcard button {
+            width: 100%;
+            background-color: #7c1d1d;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        .newcard button:hover {
+            background-color: #5a1414;
+        }
+
+        .community-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .community-section h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .community-section p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .newgrid-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .community-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .community-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon img {
+            width: 40px;
+            margin-right: 15px;
+        }
+
+        .content {
+            text-align: left;
+        }
+
+        .content h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .content p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .cta-button {
+            background-color: #7A2D2F;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #5a2022;
+        }
+        .news-section {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #f8f8f8;
+        }
+
+        .news-section h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .news-section p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon img {
+            width: 40px;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            text-align: left;
+        }
+
+        .content h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .content p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            background-color: white;
+            color: black;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+        .read-more:hover {
+            background-color: #e0e0e0;
+        }
+
+        .footer {
+            background-color: #252B2B;
+            color: white;
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer-column p {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #bbb;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid #444;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">LawyerKart</div>
+        <div class="nav-links">
+            <a href="#">Find Lawyers</a>
+            <a href="#">Learn</a>
+            <a href="#">Community</a>
+            <a href="#">News</a>
+        </div>
+        <a href="#" class="get-started">Get Started</a>
+        </div>
+    </div>
+
+    <div class="hero">
+        <h1>Expert Legal Guidance <br>At Your Fingertips</h1>
+        <p>Connect with the experienced lawyers, learn about Indian Laws and get <br>the legal support you need</p>
+        <div class="buttons">
+            <a href="#" class="btn-primary">Find a Lawyer</a>
+            <a href="#" class="btn-secondary">Join Community</a>
+        </div>
+    </div>
+    <div class="lawyer-section">
+        <h2>Find the Right Lawyer</h2>
+        <p>Search by location, language, or case type</p>
+        <div class="card-container">
+            <div class="card">
+                <h3>By Location</h3>
+                <p>Find lawyers in your city or state</p>
+                <button>Search by Location</button>
+            </div>
+            <div class="card">
+                <h3>By Language</h3>
+                <p>Connect in your preferred language</p>
+                <button>Choose language</button>
+            </div>
+            <div class="card">
+                <h3>By Case Type</h3>
+                <p>Find specialists for your case</p>
+                <button>Browse Categories</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Learn Indian Laws</h1>
+        <p>Comprehensive chapters on various legal topics</p>
+        <div class="grid-container">
+            <div class="newcard">
+                <h3>Constitutional Law</h3>
+                <p>Learn about constitutional law and its applications</p>
+                <button>Start Learning</button>
+            </div>
+            <div class="newcard">
+                <h3>Criminal Law</h3>
+                <p>Learn about criminal law and its applications</p>
+                <button>Start Learning</button>
+            </div>
+            <div class="newcard">
+                <h3>Civil Law</h3>
+                <p>Learn about civil law and its applications</p>
+                <button>Start Learning</button>
+            </div>
+            <div class="newcard">
+                <h3>Family Law</h3>
+                <p>Learn about family law and its applications</p>
+                <button>Start Learning</button>
+            </div>
+            <div class="newcard">
+                <h3>Property Law</h3>
+                <p>Learn about property law and its applications</p>
+                <button>Start Learning</button>
+            </div>
+            <div class="newcard">
+                <h3>Corporate Law</h3>
+                <p>Learn about corporate law and its applications</p>
+                <button>Start Learning</button>
+            </div>
+        </div>
+    </div>
+    <section class="community-section">
+        <h2>Join Our Legal Community</h2>
+        <p>Share experiences and get advice from others</p>
+        
+        <div class="newgrid-container">
+            <!-- Community Forum Card -->
+            <div class="community-card">
+                <div class="icon">
+                    <img src="community.png" alt="Community Forum">
+                </div>
+                <div class="content">
+                    <h3>Community Forum</h3>
+                    <p>Join discussions, share experiences, and get advice from the community</p>
+                    <button class="cta-button">Visit Forum</button>
+                </div>
+            </div>
+    
+            <!-- Ask Questions Card -->
+            <div class="community-card">
+                <div class="icon">
+                    <img src="askquestion.png" alt="Ask Questions">
+                </div>
+                <div class="content">
+                    <h3>Ask Questions</h3>
+                    <p>Post your legal questions and get responses from the community</p>
+                    <button class="cta-button">Ask Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="news-section">
+        <h2>Latest Legal News</h2>
+        <p>Stay updated with the latest developments in Indian law</p>
+        
+        <div class="news-grid">
+            <!-- News Card 1 -->
+            <div class="news-card">
+                <div class="icon">
+                    <img src="news-icon.png" alt="Latest Legal Updates">
+                </div>
+                <div class="content">
+                    <h3>Latest Legal Updates</h3>
+                    <p>Recent changes and developments in Indian law that you should know about.</p>
+                    <button class="read-more">Read More</button>
+                </div>
+            </div>
+    
+            <!-- News Card 2 -->
+            <div class="news-card">
+                <div class="icon">
+                    <img src="news-icon.png" alt="Latest Legal Updates">
+                </div>
+                <div class="content">
+                    <h3>Latest Legal Updates</h3>
+                    <p>Recent changes and developments in Indian law that you should know about.</p>
+                    <button class="read-more">Read More</button>
+                </div>
+            </div>
+    
+            <!-- News Card 3 -->
+            <div class="news-card">
+                <div class="icon">
+                    <img src="news-icon.png" alt="Latest Legal Updates">
+                </div>
+                <div class="content">
+                    <h3>Latest Legal Updates</h3>
+                    <p>Recent changes and developments in Indian law that you should know about.</p>
+                    <button class="read-more">Read More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Left Section -->
+            <div class="footer-column">
+                <h3 class="logo">LawyerKart</h3>
+                <p>Expert legal guidance at your fingertips</p>
+            </div>
+    
+            <!-- Quick Links -->
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Find Lawyers</a></li>
+                    <li><a href="#">Learn</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">News</a></li>
+                </ul>
+            </div>
+    
+            <!-- Legal -->
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+    
+            <!-- Contact -->
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <p>support@lawyerkart.com</p>
+                <p>+91 123 456 7890</p>
+            </div>
+        </div>
+    
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <p>© 2025 LawyerKart. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    
+    
+
+
+    
+</body>
+</html>
